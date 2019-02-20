@@ -290,11 +290,6 @@ style quick_button_text:
 ## to other menus, and to start the game.
 
 screen navigation():
-    timer 1 repeat True action Function(get_time)
-    if cur_hour in (7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20):
-        text 'Сейчас день, текущее время:' + ' ' + str(cur_time)[:8] size 30 xalign 0.5 yalign 0.2
-    else:
-        text 'Сейчас ночь, текущее время:' + ' ' + str(cur_time)[:8] size 30 xalign 0.5 yalign 0.2
     vbox:
         style_prefix "navigation"
 
@@ -638,9 +633,9 @@ screen file_slots(title):
 
                     button:
                         if slot == 'Save':
-                            action [Function(test_save), FileAction(slot)]
+                            action FileAction(slot)
                         else:
-                            action [Function(test_load), FileAction(slot)]
+                            action FileAction(slot)
                         #has vbox
 
                         add FileScreenshot(slot) xalign 0.5

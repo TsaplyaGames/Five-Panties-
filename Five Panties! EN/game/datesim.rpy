@@ -1,8 +1,4 @@
-init 1 python:
-    
-    events = []
-    
-    girls_points = {'Микки': {}, 'Кэйлин': {}, 'Одри': {}, 'Ирен': {}, 'Шеннон': {}}
+init 2 python:
     
     def add_event(name):
         global events

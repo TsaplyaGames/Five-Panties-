@@ -1,6 +1,4 @@
-init 1 python:
-    
-    
+init 3 python:
     
     def add_item_inv(item, amount, price):
         global inventory
