@@ -1,43 +1,21 @@
-init 3 python: 
-    from datetime import datetime
-    def get_time():
-        global cur_hour, cur_time
-        cur_hour = datetime.now().hour
-        cur_time = datetime.now().time()
-    Fist = Weapon('Fist', 15)
-    Alex = Player('Alexander', 120, 10, Fist)
-    cur_hour = datetime.now().hour
-    cur_time = datetime.now().time()
+init 1 python: 
     mp = MultiPersistent('fivepanties!')
     
+label load_stuff:
+    $ inventory = {}
+    $ add_item_inv('Талеры', 50, 1)
+    $ add_item_inv('Сладкие трусики', 1, 9999)
+    $ add_item_inv('Хлеб', 1, 25)
     
-init 4 python:
+    $ shop_stock = {}
+    $ add_item_shop('Вино', 10, 50)
+    $ add_item_shop('Шоколад', 10, 20)
+    $ add_item_shop('Банан', 10, 15)
+    $ add_item_shop('Презервативы', 10, 75)
     
-    import pickle
+    $ events = []
+    $ girls_points = {'Микки': {'лп': 0}, 'Кэйлин': {'лп': 0}, 'Одри': {'лп': 0}, 'Ирен': {'лп': 0}, 'Шеннон': {'лп': 0}}
     
-    test_dict = {'lol': 1, 'kek': 2}
-    
-    def test_save():
-        global test_dict
-        with open('test_dict.pickle', 'wb') as f:
-            pickle.dump(test_dict, f)
-            
-    def test_load():
-        global test_dict
-        with open('test_dict.pickle', 'rb') as f:
-            test_dict = pickle.load(f)
-            
-screen test_save:
-    textbutton 'lol' xpos 0.5 ypos 0.5 action [Function(test_save), Hide('test_save'), Jump('test1')]
-    
-screen test_dict:
-    vbox xpos 0.5 ypos 0.5:
-        text str(test_dict['lol'])
-        text str(test_dict['kek'])
-        #textbutton 'up' action SetDict('test_dict', 'lol', 3)
-        textbutton 'close' action [Hide('test_dict'), Jump('start')]
-        
-label test1:
-    $ test_dict['lol'] += 2
-    call screen test_dict
-    
+    $ Fist = Weapon('Fist', 15)
+    $ Alex = Player('Alexander', 120, 10, Fist)
+    return

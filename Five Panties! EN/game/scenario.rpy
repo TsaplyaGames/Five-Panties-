@@ -46,7 +46,6 @@ label prologue:
                     mky "I don’t know, how did it happened. We are hiding in psychologist’s office and we don’t know what to do."
                     me "Well, lead me there then we will come up with something."
                     $ add_event('Встретил Микки и прогнал беса')
-                    #$ meet_micky_and_imp_removed = True
                     jump physchologists_office
                 "To do nothing":
                     "I stood affected, wasn’t knowing what to do."
@@ -102,8 +101,6 @@ label prologue:
                     mky "Turn right and to the end of corridor."
                     $ add_event('Спас Микки')
                     $ add_event('Микки была избита')
-                    #$ saved_micky = True
-                    #$ micky_was_beaten = True
                     jump physchologists_office
                 "Go to steps.":
                     me "Jesus Christ! What the thief will be robbing at this time?"
@@ -160,9 +157,8 @@ label physchologists_office:
         menu:
             "Accept Keilin’s help":
                 me "It makes sense. Okay, let’s go!"
-                $ kln_lp +=1
+                $ add_point('Кэйлин', 'лп', 1)
                 $ add_event('Кейлин с Александром')
-                #$ keilin_with_alex = True
                 return
             "Decline Keilin’s help":
                 me "No, Keilin, you should stay with Mickey."
